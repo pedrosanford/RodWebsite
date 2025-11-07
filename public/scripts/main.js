@@ -2,11 +2,13 @@
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing...');
     initializeContactForm();
     initializeMobileNav();
     initializeBackToTop();
     initializeHomeContactForm();
     initializeNavbarShrink();
+    console.log('All functions initialized');
 });
 
 // Load reusable components
@@ -77,7 +79,52 @@ function initializeContactForm() {
         });
     }
 
-    // Form submission is handled by FormSubmit - no JavaScript interception needed
+    // Handle popup form AJAX submission
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('popup-form-success-message');
+
+    if (contactForm) {
+        console.log('Contact form found, attaching AJAX handler');
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            console.log('Form submission intercepted');
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch('https://formsubmit.co/pedrosamsan@gmail.com', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    contactForm.style.display = 'none';
+                    if (successMessage) {
+                        successMessage.style.display = 'block';
+                    }
+                    contactForm.reset();
+
+                    // Auto-close after 2.5 seconds
+                    setTimeout(function() {
+                        if (contactOverlay) {
+                            contactOverlay.classList.remove('active');
+                        }
+                        contactForm.style.display = 'block';
+                        if (successMessage) {
+                            successMessage.style.display = 'none';
+                        }
+                    }, 2500);
+                } else {
+                    alert('There was an error sending your message. Please try again.');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('There was an error sending your message. Please try again.');
+            }
+        });
+    }
 }
 
 // Initialize mobile navigation
@@ -127,25 +174,16 @@ function initializeBackToTop() {
 // Initialize Home Contact Form
 function initializeHomeContactForm() {
     const homeContactForm = document.getElementById('home-contact-form');
+    const successMessage = document.getElementById('home-form-success-message');
 
     if (!homeContactForm) return;
 
     homeContactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-
         const formData = new FormData(homeContactForm);
-        const data = Object.fromEntries(formData);
-
-        const successMessage = document.getElementById('form-success');
-        const errorMessage = document.getElementById('form-error');
-
-        // Hide any previous messages
-        successMessage.style.display = 'none';
-        errorMessage.style.display = 'none';
 
         try {
-            // Send to Formspree (replace with actual endpoint)
-            const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+            const response = await fetch('https://formsubmit.co/pedrosamsan@gmail.com', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -154,20 +192,25 @@ function initializeHomeContactForm() {
             });
 
             if (response.ok) {
-                successMessage.style.display = 'block';
+                homeContactForm.style.display = 'none';
+                if (successMessage) {
+                    successMessage.style.display = 'block';
+                }
                 homeContactForm.reset();
-                // Scroll to success message
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                // Show form again after 5 seconds
+                setTimeout(function() {
+                    homeContactForm.style.display = 'block';
+                    if (successMessage) {
+                        successMessage.style.display = 'none';
+                    }
+                }, 5000);
             } else {
-                errorMessage.style.display = 'block';
+                alert('There was an error sending your message. Please try again.');
             }
         } catch (error) {
-            // Fallback to mailto if fetch fails
-            const mailtoLink = `mailto:pedrosamsan@gmail.com?subject=Contact from ${data.name}&body=${encodeURIComponent(
-                `Name: ${data.name}\nEmail: ${data.email}\nOrganization: ${data.organization || 'N/A'}\nPhone: ${data.phone || 'N/A'}\n\nMessage:\n${data.message}`
-            )}`;
-
-            window.location.href = mailtoLink;
+            console.error('Form submission error:', error);
+            alert('There was an error sending your message. Please try again.');
         }
     });
 }
