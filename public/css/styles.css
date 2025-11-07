@@ -2000,3 +2000,49 @@ body {
     width: 100%;
     text-align: center;
 }
+
+/* Success Message Styles */
+.form-success-message,
+.home-form-success-message {
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    margin: 0 auto 20px;
+    font-weight: bold;
+}
+
+.form-success-message h3,
+.home-form-success-message h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.form-success-message p,
+.home-form-success-message p {
+    color: var(--text-medium);
+    font-size: 16px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -4,6 +4,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     initializeContactForm();
     initializeMobileNav();
+    initializeHomeContactForm();
 });
 
 // Load reusable components
@@ -48,6 +49,7 @@ function initializeContactForm() {
     const contactOverlay = document.getElementById('contact-overlay');
     const closeContact = document.getElementById('close-contact');
     const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('popup-form-success-message');
 
     // Open contact form
     contactTriggers.forEach(trigger => {
@@ -63,6 +65,9 @@ function initializeContactForm() {
     if (closeContact) {
         closeContact.addEventListener('click', function() {
             contactOverlay.classList.remove('active');
+            // Reset form and hide success message when closing
+            if (contactForm) contactForm.style.display = 'block';
+            if (successMessage) successMessage.style.display = 'none';
         });
     }
 
@@ -71,11 +76,98 @@ function initializeContactForm() {
         contactOverlay.addEventListener('click', function(e) {
             if (e.target === contactOverlay) {
                 contactOverlay.classList.remove('active');
+                // Reset form and hide success message when closing
+                if (contactForm) contactForm.style.display = 'block';
+                if (successMessage) successMessage.style.display = 'none';
             }
         });
     }
 
-    // Form submission is handled by FormSubmit - no JavaScript interception needed
+    // Handle form submission with AJAX
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch('https://formsubmit.co/pedrosamsan@gmail.com', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Hide form and show success message
+                    contactForm.style.display = 'none';
+                    if (successMessage) {
+                        successMessage.style.display = 'block';
+                    }
+
+                    // Reset form
+                    contactForm.reset();
+
+                    // Close popup after 2.5 seconds
+                    setTimeout(function() {
+                        contactOverlay.classList.remove('active');
+                        contactForm.style.display = 'block';
+                        if (successMessage) successMessage.style.display = 'none';
+                    }, 2500);
+                } else {
+                    alert('There was an error sending your message. Please try again.');
+                }
+            } catch (error) {
+                alert('There was an error sending your message. Please try again.');
+            }
+        });
+    }
+}
+
+// Handle home page contact form (if it exists)
+function initializeHomeContactForm() {
+    const homeContactForm = document.getElementById('home-contact-form');
+    const successMessage = document.getElementById('home-form-success-message');
+
+    if (!homeContactForm) return;
+
+    homeContactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(homeContactForm);
+
+        try {
+            const response = await fetch('https://formsubmit.co/pedrosamsan@gmail.com', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Hide form and show success message
+                homeContactForm.style.display = 'none';
+                if (successMessage) {
+                    successMessage.style.display = 'block';
+                }
+
+                // Reset form
+                homeContactForm.reset();
+
+                // Show form again after 5 seconds
+                setTimeout(function() {
+                    homeContactForm.style.display = 'block';
+                    if (successMessage) successMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                alert('There was an error sending your message. Please try again.');
+            }
+        } catch (error) {
+            alert('There was an error sending your message. Please try again.');
+        }
+    });
 }
 
 // Initialize mobile navigation
