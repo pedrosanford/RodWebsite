@@ -75,30 +75,7 @@ function initializeContactForm() {
         });
     }
 
-    // Handle form submission
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-
-            // For now, we'll use mailto as a fallback
-            // Replace this with your actual form handling (Formspree, etc.)
-            const mailtoLink = `mailto:pedrosamsan@gmail.com?subject=Contact from ${data.name}&body=${encodeURIComponent(
-                `Name: ${data.name}\nEmail: ${data.email}\nOrganization: ${data.organization || 'N/A'}\n\nMessage:\n${data.message}`
-            )}`;
-
-            window.location.href = mailtoLink;
-
-            // Close the form
-            contactOverlay.classList.remove('active');
-
-            // Reset form
-            contactForm.reset();
-        });
-    }
+    // Form submission is handled by FormSubmit - no JavaScript interception needed
 }
 
 // Initialize mobile navigation
