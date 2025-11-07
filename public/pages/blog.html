@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Rod Samra</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../images/logo.png" alt="Rod Samra Logo" class="logo-img">
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+
+                <a href="services.html" class="nav-link">Services</a>
+
+                <a href="training.html" class="nav-link">Training</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="https://www.linkedin.com/in/rod-samra-mba-sphr-3a328039/" target="_blank" class="nav-link nav-linkedin">
+                    <img src="../images/linkedin-icon.png" alt="LinkedIn" class="nav-icon">
+                </a>
+                <button class="btn btn-contact contact-trigger">Contact</button>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Insights & Perspectives</h1>
+            <p class="page-subtitle">Thought leadership on HR compliance, equity analytics, and workplace transformation</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="container">
+            <div id="blog-posts" class="blog-grid">
+                <!-- Blog posts will be dynamically loaded here -->
+                <div class="loading">Loading articles...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Rod Samra</h3>
+                    <p>Strategic HR & Compliance Consultant</p>
+                    <p>Building fair, ethical, and high-performing workplaces</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="training.html">Training</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#mission">Tailored Solutions</a></li>
+                        <li><a href="services.html#disability">Disability Employment</a></li>
+                        <li><a href="services.html#compliance">Compliance & Risk</a></li>
+                        <li><a href="services.html#analytics">Equity Analytics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="https://www.linkedin.com/in/rod-samra-mba-sphr-3a328039/" target="_blank" class="footer-social">
+                        <img src="../images/linkedin-icon.png" alt="LinkedIn" class="footer-icon">
+                        LinkedIn
+                    </a>
+                    <button class="footer-contact contact-trigger">Contact Rod</button>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rod Samra. All rights reserved. <a href="admin-login.html" class="admin-link">Admin</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Form Popup -->
+    <div class="contact-overlay" id="contact-overlay">
+        <div class="contact-form-popup">
+            <button class="close-btn" id="close-contact">&times;</button>
+
+            <h2>Get in Touch</h2>
+            <p class="form-intro">Ready to transform your workplace? Let's start a conversation.</p>
+
+            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label for="contact-name">Name *</label>
+                    <input type="text" id="contact-name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-email">Email *</label>
+                    <input type="email" id="contact-email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-organization">Organization</label>
+                    <input type="text" id="contact-organization" name="organization">
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-message">Message *</label>
+                    <textarea id="contact-message" name="message" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+
+            <div class="form-divider">
+                <span>or</span>
+            </div>
+
+            <a href="https://calendar.google.com/calendar/appointments/schedules/YOUR_SCHEDULE_ID" target="_blank" class="btn btn-secondary btn-calendar">
+                📅 Book a Meeting
+            </a>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/blog.js"></script>
+</body>
+</html>

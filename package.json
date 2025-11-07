@@ -1,0 +1,22 @@
+{
+  "name": "rod-samra-website",
+  "version": "1.0.0",
+  "description": "Professional website for Rod Samra - Strategic HR & Compliance Consultant",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "npx serve -s public -p 8000",
+    "dev": "npx live-server public --port=8000",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "hr-consulting",
+    "compliance",
+    "diversity-equity-inclusion",
+    "OFCCP",
+    "EEO"
+  ],
+  "author": "Rod Samra",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
