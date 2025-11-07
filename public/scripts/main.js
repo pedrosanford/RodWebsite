@@ -91,7 +91,7 @@ function initializeContactForm() {
             const formData = new FormData(contactForm);
 
             try {
-                const response = await fetch('https://formsubmit.co/pedrosamsan@gmail.com', {
+                const response = await fetch('https://formsubmit.co/2729d7d9ce8d1a6398f92da318585e11', {
                     method: 'POST',
                     body: formData,
                     headers: {
@@ -183,7 +183,7 @@ function initializeHomeContactForm() {
         const formData = new FormData(homeContactForm);
 
         try {
-            const response = await fetch('https://formsubmit.co/pedrosamsan@gmail.com', {
+            const response = await fetch('https://formsubmit.co/2729d7d9ce8d1a6398f92da318585e11', {
                 method: 'POST',
                 body: formData,
                 headers: {
