@@ -36,31 +36,39 @@ function parseFrontmatter(content) {
     return { frontmatter, body };
 }
 
-// Fetch list of markdown files from the posts directory
+// Fetch list of markdown files from the posts directory using GitHub API
 async function fetchPostList() {
     try {
-        // Try to fetch the posts directory listing
-        // Note: This works with Netlify's file serving
-        const response = await fetch('../posts/');
-        const text = await response.text();
+        // Fetch from GitHub API (public repo, no token needed)
+        const response = await fetch(
+            'https://api.github.com/repos/pedrosanford/RodWebsite/contents/public/posts'
+        );
 
-        // Parse HTML to extract .md file links
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(text, 'text/html');
-        const links = Array.from(doc.querySelectorAll('a'));
-        const mdFiles = links
-            .map(a => a.getAttribute('href'))
-            .filter(href => href && href.endsWith('.md'));
+        if (!response.ok) {
+            throw new Error(`GitHub API returned ${response.status}`);
+        }
 
+        const files = await response.json();
+
+        // Filter for .md files and extract names
+        const mdFiles = files
+            .filter(file => file.name.endsWith('.md') && file.type === 'file')
+            .map(file => file.name);
+
+        console.log('Posts found via GitHub API:', mdFiles);
         return mdFiles;
+
     } catch (error) {
-        // If directory listing doesn't work, fall back to known files
-        console.log('Directory listing not available, checking for known posts');
+        console.error('Error fetching from GitHub API:', error);
 
-        // Try to fetch known posts
-        const knownPosts = ['example-post.md'];
+        // Fallback: try to fetch known posts directly
+        console.log('Falling back to known posts list');
+        const knownPosts = [
+            'example-post.md',
+            '2025-11-09-the-hidden-barrier-to-disability-inclusion-why-employees-dont-ask-for-help.md'
+        ];
+
         const existingPosts = [];
-
         for (const post of knownPosts) {
             try {
                 const response = await fetch(`../posts/${post}`);
