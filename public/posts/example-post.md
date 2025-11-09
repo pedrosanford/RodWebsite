@@ -5,7 +5,7 @@ description: Despite low unemployment, today’s job market traps workers in
   endless AI-driven rejections, invisible labor, and frozen opportunities,
   highlighting a system that favors automation over people.
 linkedin_url: https://www.linkedin.com/in/rod-samra-mba-sphr-3a328039/recent-activity/all/
-thumbnail: ""
+thumbnail: /images/blog/original.avif
 ---
 
 **The Atlantic’s “A Job Market From Hell” (Sept. 2025, Annie Lowrey)** captures the paradox of today’s labor market: low unemployment on paper, yet a lived reality of endless applications, ghosting, and stalled careers. The deeper insight is that technology, especially AI in hiring, has created a frictionless system for employers but a hellish maze for workers.
