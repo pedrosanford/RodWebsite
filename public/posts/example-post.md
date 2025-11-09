@@ -1,6 +1,6 @@
 ---
 title: A Job Market From Hell
-date: 2025-02-20T10:00:00.000Z
+date: 2025-11-09T16:59:00.000-05:00
 description: Despite low unemployment, today’s job market traps workers in
   endless AI-driven rejections, invisible labor, and frozen opportunities,
   highlighting a system that favors automation over people.
