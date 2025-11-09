@@ -4,7 +4,7 @@ date: 2025-11-09T16:59:00.000-05:00
 description: Despite low unemployment, today’s job market traps workers in
   endless AI-driven rejections, invisible labor, and frozen opportunities,
   highlighting a system that favors automation over people.
-linkedin_url: https://www.linkedin.com/in/rod-samra-mba-sphr-3a328039/recent-activity/all/
+linkedin_url: https://www.linkedin.com/feed/update/urn:li:activity:7393368317060866048/
 thumbnail: /images/blog/original.avif
 ---
 
