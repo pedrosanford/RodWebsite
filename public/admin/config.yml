@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main # Change this to your main branch name if different
+
+# Publish mode - editorial_workflow enables draft/review/publish workflow
+publish_mode: simple
+
+# Media files configuration
+media_folder: "public/images/blog" # Where uploaded images will be stored
+public_folder: "/images/blog" # Public path for images in markdown
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog Posts" # Used in the UI
+    folder: "public/posts" # The path to the folder where the posts are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., 2025-01-15-my-post.md
+    fields: # The fields for each document
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "LinkedIn URL", name: "linkedin_url", widget: "string", required: false, hint: "Optional: Link to LinkedIn post"}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false, hint: "Optional: Featured image for the post"}
+      - {label: "Body", name: "body", widget: "markdown"}
