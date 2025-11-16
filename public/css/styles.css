@@ -1742,7 +1742,7 @@ body {
     }
 
     .metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 15px;
     }
 
@@ -1856,7 +1856,13 @@ body {
     }
 
     .logo-img {
-        height: 40px;
+        height: 100px;
+        width: 285px;
+    }
+
+    .navbar.scrolled .logo-img {
+        height: 100px;
+        width: 285px;
     }
 
     .training-header-section {
