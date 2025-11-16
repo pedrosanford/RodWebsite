@@ -192,12 +192,8 @@
             <h2>Get in Touch</h2>
             <p class="form-intro">Ready to transform your workplace? Let's start a conversation.</p>
 
-            <form id="contact-form" action="https://formsubmit.co/2729d7d9ce8d1a6398f92da318585e11" method="POST">
-                <input type="hidden" name="_subject" value="New Contact Form Submission - Rod Samra Website">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_url" value="https://samrahrconsulting.netlify.app/pages/about.html">
-                <input type="text" name="_honey" style="display:none">
+            <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="text" name="bot-field" style="display:none">
 
                 <div class="form-group">
                     <label for="contact-name">Name *</label>

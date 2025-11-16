@@ -79,7 +79,7 @@ function initializeContactForm() {
         });
     }
 
-    // Handle popup form AJAX submission
+    // Handle popup form AJAX submission for Netlify Forms
     const contactForm = document.getElementById('contact-form');
     const successMessage = document.getElementById('popup-form-success-message');
 
@@ -90,13 +90,13 @@ function initializeContactForm() {
             console.log('Form submission intercepted');
             const formData = new FormData(contactForm);
 
+            // Add form-name for Netlify Forms
+            formData.append('form-name', 'contact');
+
             try {
-                const response = await fetch('https://formsubmit.co/2729d7d9ce8d1a6398f92da318585e11', {
+                const response = await fetch('/', {
                     method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    body: formData
                 });
 
                 if (response.ok) {
@@ -171,7 +171,7 @@ function initializeBackToTop() {
     });
 }
 
-// Initialize Home Contact Form
+// Initialize Home Contact Form for Netlify Forms
 function initializeHomeContactForm() {
     const homeContactForm = document.getElementById('home-contact-form');
     const successMessage = document.getElementById('home-form-success-message');
@@ -182,13 +182,13 @@ function initializeHomeContactForm() {
         e.preventDefault();
         const formData = new FormData(homeContactForm);
 
+        // Add form-name for Netlify Forms
+        formData.append('form-name', 'home-contact');
+
         try {
-            const response = await fetch('https://formsubmit.co/2729d7d9ce8d1a6398f92da318585e11', {
+            const response = await fetch('/', {
                 method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                body: formData
             });
 
             if (response.ok) {
